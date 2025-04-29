@@ -19,6 +19,12 @@ int main()
     {
         cout << colors[i] << endl;
     }
+    // loop for array
+
+    for (string color : colors)
+    {
+        cout << color << endl;
+    }
 
     string response;
     do
