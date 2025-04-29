@@ -13,5 +13,7 @@ int main()
     const int x = 5;
     // x = 6; // this will throw an error
     cout << x;
+    bool y = true;
+    cout << "True" << y;
     return 0;
 }
