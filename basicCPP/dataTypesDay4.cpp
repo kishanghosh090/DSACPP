@@ -36,7 +36,7 @@ int main()
     name = "kishan";
     cout << num << endl;
 
-    long long number = 2333333333332232323232323232323;
+    long long number = 2333333323;
     cout << number << endl;
 
     return 0;
