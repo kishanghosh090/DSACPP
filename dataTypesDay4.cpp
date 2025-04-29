@@ -22,19 +22,22 @@ int main()
     // input from user
     int age;
     cout << "Enter your age: ";
-    cin >> age;
-    cout << "Your age is: " << age << endl;
+    // cin >> age;
+    // cout << "Your age is: " << age << endl;
 
     // input string
     string myName;
     cout << "Enter Your Name";
     // getline(cin, myName);
-    cin >> myName;
-    cout << myName << endl;
+    // cin >> myName;
+    // cout << myName << endl;
 
     auto num = 5;
     name = "kishan";
     cout << num << endl;
+
+    long long number = 2333333333332232323232323232323;
+    cout << number << endl;
 
     return 0;
 }
