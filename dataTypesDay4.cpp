@@ -32,5 +32,9 @@ int main()
     cin >> myName;
     cout << myName << endl;
 
+    auto num = 5;
+    name = "kishan";
+    cout << num << endl;
+
     return 0;
 }
