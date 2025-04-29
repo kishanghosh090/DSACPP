@@ -25,6 +25,13 @@ int main()
     {
         cout << "Do You Want more Tea???";
         cin >> response;
+
+        if (response == "nooo")
+        {
+            cout << "Break statement executed";
+            break;
+        }
+
     } while (response == "yes");
     return 0;
 }
