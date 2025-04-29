@@ -22,6 +22,14 @@ int main()
 
 int kishan()
 {
-    std::cout << "Kishan" << std::endl;
+    try
+    {
+        std::cout << "Kishan" << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
     return 0;
 }
