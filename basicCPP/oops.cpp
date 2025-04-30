@@ -33,6 +33,7 @@ int main()
     myChai.serveing = 5;
     myChai.ingredients.push_back("Tea Leaves");
     myChai.ingredients.push_back("Water");
+    myChai.ingredients.assign(2, "Sugar");
     myChai.displayChaiDetails();
 
     return 0;
