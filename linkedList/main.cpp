@@ -34,6 +34,10 @@ public:
             {
                 cout << temp->data << "->";
                 temp = temp->next;
+                if (temp->next == NULL)
+                {
+                    cout << temp->data << "->";
+                }
             }
         }
         cout << "\n";
@@ -53,19 +57,29 @@ public:
     void insert_at_end(int value)
     {
         Node *temp = new Node();
-        Node *t = head;
         temp->data = value;
 
-        if (head == nullptr)
+        if (head == NULL)
         {
             head = temp;
             return;
         }
-        while (t->next != NULL)
+        else
         {
-            t = t->next;
+            Node *t = head;
+            while (t->next != NULL)
+            {
+
+                t = t->next;
+            }
+            t->next = temp;
         }
-        t->next = temp;
+    }
+
+    // insert at any position
+
+    void insert_at_postion(int value, int position)
+    {
     }
 };
 
@@ -75,13 +89,18 @@ int main()
 
     LinkedList ll;
 
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "Enter " << i + 1 << " th value of linked list: ";
-        int num;
-        cin >> num;
-        ll.insert_at_begin(num);
-    }
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     cout << "Enter " << i + 1 << " th value of linked list: ";
+    //     int num;
+    //     cin >> num;
+    //     ll.insert_at_begin(num);
+    // }
+    ll.insert_at_begin(12);
+    ll.insert_at_begin(18);
+    ll.insert_at_begin(16);
+    ll.insert_at_end(100);
+    // ll.insert_at_end(100);
 
     ll.print();
 
