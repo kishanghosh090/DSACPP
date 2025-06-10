@@ -80,6 +80,11 @@ public:
 
     void insert_at_postion(int value, int position)
     {
+        if (position < 0)
+        {
+            cout << "Position is not valid";
+        }
+
         Node *temp = new Node();
         temp->data = value;
 
@@ -140,8 +145,36 @@ public:
 
     // delete from any position
 
-    void delete_from_position()
+    void delete_from_position(int position)
     {
+        if (position < 0)
+        {
+            cout << "Position is not valid";
+        }
+
+        if (head == NULL)
+        {
+            cout << "Linked List is empty";
+        }
+        else if (position == 1)
+        {
+            Node *temp = head;
+            head = head->next;
+            delete (temp);
+        }
+        else
+        {
+            Node *temp = head;
+
+            while (position - 2 != 0 && temp->next != NULL)
+            {
+                temp = temp->next;
+                position--;
+            }
+            Node *t = temp->next;
+            temp->next = t->next;
+            delete (t);
+        }
     }
 };
 
@@ -165,7 +198,8 @@ int main()
     // ll.insert_at_end(100);
     ll.insert_at_postion(54, 4);
     ll.insert_at_begin(16000);
-    ll.delete_from_begin();
+    // ll.delete_from_begin();
+    ll.delete_from_position(2);
     ll.print();
 
     return 0;
