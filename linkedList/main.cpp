@@ -100,6 +100,49 @@ public:
             t->next = temp;
         }
     }
+
+    // delete from begining
+
+    void delete_from_begin()
+    {
+        if (head == NULL)
+        {
+            cout << "Linked List is empty";
+        }
+        else
+        {
+
+            Node *temp = head;
+            head = head->next;
+            delete (temp);
+        }
+    }
+    // delete form end
+
+    void delete_from_end()
+    {
+        if (head == NULL)
+        {
+            cout << "Linked List is empty";
+        }
+        else
+        {
+            Node *temp = head;
+
+            while (temp->next->next != NULL)
+            {
+                temp = temp->next;
+            }
+            delete (temp->next);
+            temp->next = NULL;
+        }
+    }
+
+    // delete from any position
+
+    void delete_from_position()
+    {
+    }
 };
 
 int main()
@@ -120,8 +163,9 @@ int main()
     ll.insert_at_begin(16);
     ll.insert_at_end(100);
     // ll.insert_at_end(100);
-    ll.insert_at_postion(54,4);
-
+    ll.insert_at_postion(54, 4);
+    ll.insert_at_begin(16000);
+    ll.delete_from_begin();
     ll.print();
 
     return 0;
