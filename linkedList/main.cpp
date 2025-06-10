@@ -80,6 +80,25 @@ public:
 
     void insert_at_postion(int value, int position)
     {
+        Node *temp = new Node();
+        temp->data = value;
+
+        if (position == 1)
+        {
+            temp->next = head;
+            head = temp;
+        }
+        else
+        {
+            Node *t = head;
+            while (position - 2 != 0)
+            {
+                t = t->next;
+                position--;
+            }
+            temp->next = t->next;
+            t->next = temp;
+        }
     }
 };
 
@@ -101,6 +120,7 @@ int main()
     ll.insert_at_begin(16);
     ll.insert_at_end(100);
     // ll.insert_at_end(100);
+    ll.insert_at_postion(54,4);
 
     ll.print();
 
