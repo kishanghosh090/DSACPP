@@ -47,6 +47,26 @@ public:
         temp->next = head;
         head = temp;
     }
+
+    // insert at end
+
+    void insert_at_end(int value)
+    {
+        Node *temp = new Node();
+        Node *t = head;
+        temp->data = value;
+
+        if (head == nullptr)
+        {
+            head = temp;
+            return;
+        }
+        while (t->next != NULL)
+        {
+            t = t->next;
+        }
+        t->next = temp;
+    }
 };
 
 int main()
