@@ -64,6 +64,25 @@ public:
             temp->prev = t;
         }
     }
+
+    // insert at begining----
+
+    void insert_at_begin(int value)
+    {
+        Node *temp = new Node();
+
+        temp->data = value;
+
+        if (head == NULL)
+        {
+            head = temp;
+        }
+
+        temp->next = head;
+
+        head->prev = temp;
+        head = temp;
+    }
 };
 int main()
 {
@@ -75,6 +94,8 @@ int main()
     dll.insert_at_end(22);
     dll.insert_at_end(24);
     dll.insert_at_end(25);
+    dll.insert_at_begin(100);
+    dll.insert_at_begin(1007);
     dll.print();
 
     return 0;
