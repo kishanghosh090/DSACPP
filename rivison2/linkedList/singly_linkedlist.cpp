@@ -109,7 +109,6 @@ public:
 
         while ((position - 2) > 0 && temp->next != NULL)
         {
-            // cout << "hello";
             temp = temp->next;
             position--;
         }
@@ -121,7 +120,26 @@ public:
     }
 
     // delete from begin------------------
-    void delete_from_begin() {}
+    void delete_from_begin()
+    {
+        if (head == NULL)
+        {
+            cout << "ouchhh!! There are nooo linked list.";
+            return;
+        }
+        if (head->next == NULL)
+        {
+            Node *temp = head;
+            head = NULL;
+            delete (temp);
+            sizeOfLinkedList--;
+            return;
+        }
+        Node *temp = head;
+        head = temp->next;
+        delete (temp);
+        sizeOfLinkedList--;
+    }
 
     // void delete from end---------------
     void delete_from_end() {}
@@ -138,7 +156,11 @@ int main()
     ll1.insert_at_begin(24);
     ll1.insert_at_begin(54);
     ll1.insert_at_end(10000);
-    ll1.insert_at_position(6, 76);
+    ll1.insert_at_position(3, 76);
+    ll1.delete_from_begin();
+    ll1.delete_from_begin();
+    ll1.delete_from_begin();
+    ll1.delete_from_begin();
     ll1.print();
     return 0;
 }
