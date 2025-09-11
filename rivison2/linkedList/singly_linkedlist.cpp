@@ -19,9 +19,11 @@ class LinkedList
 
 public:
     Node *head;
+    int sizeOfLinkedList;
     LinkedList()
     {
         this->head = NULL;
+        sizeOfLinkedList = 0;
     }
 
     // print linked list------------------
@@ -46,6 +48,7 @@ public:
         temp->next = head;
         temp->data = value;
         head = temp;
+        sizeOfLinkedList++;
     }
 
     // insert at end----------------------
@@ -80,17 +83,41 @@ public:
             Node *newNode = new Node();
             newNode->data = value;
             temp->next = newNode;
+            sizeOfLinkedList++;
         }
     }
 
     // insert at any position-------------
     void insert_at_position(int position, int value)
     {
-        if (head = NULL)
+        if (head == NULL)
         {
             insert_at_begin(value);
             return;
         }
+        if (position > sizeOfLinkedList - 1)
+        {
+            cout << "ouhhhchhh!!" << " size of linked list is " << sizeOfLinkedList << ". " << "you can insert data max " << sizeOfLinkedList + 1 << " th position...\n";
+            return;
+        }
+
+        if (position <= 0)
+        {
+            cout << "Position " << position << " is invalid" << endl;
+        }
+        Node *temp = head;
+
+        while ((position - 2) > 0 && temp->next != NULL)
+        {
+            // cout << "hello";
+            temp = temp->next;
+            position--;
+        }
+        Node *newNode = new Node();
+        newNode->data = value;
+        newNode->next = temp->next;
+        temp->next = newNode;
+        sizeOfLinkedList++;
     }
 
     // delete from begin------------------
@@ -111,6 +138,7 @@ int main()
     ll1.insert_at_begin(24);
     ll1.insert_at_begin(54);
     ll1.insert_at_end(10000);
+    ll1.insert_at_position(6, 76);
     ll1.print();
     return 0;
 }
