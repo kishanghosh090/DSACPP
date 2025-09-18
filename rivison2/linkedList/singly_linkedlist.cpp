@@ -151,6 +151,7 @@ public:
 int main()
 {
     LinkedList ll1;
+
     ll1.print();
     ll1.insert_at_begin(12);
     ll1.insert_at_begin(24);
@@ -158,9 +159,9 @@ int main()
     ll1.insert_at_end(10000);
     ll1.insert_at_position(3, 76);
     ll1.delete_from_begin();
-    ll1.delete_from_begin();
-    ll1.delete_from_begin();
-    ll1.delete_from_begin();
+    // ll1.delete_from_begin();
+    // ll1.delete_from_begin();
+    // ll1.delete_from_begin();
     ll1.print();
     return 0;
 }
