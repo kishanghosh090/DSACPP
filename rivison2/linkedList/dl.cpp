@@ -17,10 +17,9 @@ public:
 
 class DLinkedList
 {
-private:
-    Node *head;
 
 public:
+    Node *head;
     DLinkedList()
     {
         head = NULL;
@@ -34,8 +33,9 @@ public:
         }
 
         Node *t = head;
-        while (t->next != NULL)
+        while (t != NULL)
         {
+            // cout << "<-> " << t->prev << " " << t->data << " " << t->next << " <->";
             cout << "<-> " << t->data << " <->";
             t = t->next;
         }
@@ -61,7 +61,19 @@ public:
     void insert_at_end(int value) {}
     void insert_at_position(int value, int position) {}
 
-    void delete_from_begin() {}
+    void delete_from_begin()
+    {
+        if (head == NULL)
+        {
+            cout << "Linked List is empty";
+            return;
+        }
+
+        Node *t = head;
+        head = head->next;
+        head->prev = NULL;
+        delete (t);
+    }
     void delete_from_end() {}
     void delete_from_position() {}
 };
@@ -73,6 +85,10 @@ int main()
     dl1.insert_at_begin(20);
     dl1.insert_at_begin(30);
     dl1.insert_at_begin(40);
+    dl1.delete_from_begin();
+    dl1.delete_from_begin();
+    dl1.delete_from_begin();
+
     dl1.print();
 
     return 0;
