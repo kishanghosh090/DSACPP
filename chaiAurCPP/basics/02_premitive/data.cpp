@@ -3,6 +3,8 @@ using namespace std;
 
 int main()
 {
+    __int8_t a = 1;
+    cout << a;
     int teaLeaves = 50;
     float temp = 85.55;
     double price = 199.999;
