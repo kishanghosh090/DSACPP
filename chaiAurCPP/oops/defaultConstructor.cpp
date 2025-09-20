@@ -28,6 +28,7 @@ public:
         {
             cout << i << endl;
         }
+        
     }
 };
 int main()
