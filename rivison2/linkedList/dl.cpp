@@ -75,7 +75,26 @@ public:
         newNode->prev = temp;
         temp->next = newNode;
     }
-    void insert_at_position(int value, int position) {}
+    void insert_at_position(int value, int position)
+    {
+        Node *t = head;
+
+        while ((position - 2) > 0 && (t->next != NULL))
+        {
+            t = t->next;
+            position--;
+        }
+
+        Node *newNode = new Node();
+        newNode->prev = t;
+        newNode->next = t->next;
+        t->next = newNode;
+
+        if (t->next != NULL)
+        {
+            t->next->prev = newNode;
+        }
+    }
 
     void delete_from_begin()
     {
@@ -92,8 +111,35 @@ public:
     }
     void delete_from_end()
     {
+        if (head->next == NULL)
+        {
+            delete_from_begin();
+            return;
+        }
+        Node *t = head;
+        while (t->next != NULL)
+        {
+            t = t->next;
+        }
+
+        t->prev->next = NULL;
+        delete (t);
     }
-    void delete_from_position() {}
+    void delete_from_position(int position)
+    {
+        Node *t = head;
+
+        while ((position - 2) > 0 && (t->next != NULL))
+        {
+            t = t->next;
+            position--;
+        }
+
+        Node *temp = t->next;
+        t->next = t->next->next;
+        t->next->next->prev = t;
+        delete (temp);
+    }
 };
 
 int main()
@@ -103,9 +149,10 @@ int main()
     dl1.insert_at_begin(20);
     dl1.insert_at_begin(30);
     dl1.insert_at_begin(40);
-    dl1.delete_from_begin();
-    dl1.delete_from_begin();
-    dl1.delete_from_begin();
+    // dl1.delete_from_begin();
+    // dl1.delete_from_begin();
+    // dl1.delete_from_begin();
+    dl1.delete_from_position(2);
 
     dl1.print();
 
