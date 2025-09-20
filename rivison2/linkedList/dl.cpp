@@ -58,7 +58,23 @@ public:
         t->next = head;
         head = t;
     }
-    void insert_at_end(int value) {}
+    void insert_at_end(int value)
+    {
+        if (head == NULL)
+        {
+            insert_at_begin(value);
+            return;
+        }
+        Node *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        Node *newNode = new Node();
+        newNode->data = value;
+        newNode->prev = temp;
+        temp->next = newNode;
+    }
     void insert_at_position(int value, int position) {}
 
     void delete_from_begin()
@@ -74,7 +90,9 @@ public:
         head->prev = NULL;
         delete (t);
     }
-    void delete_from_end() {}
+    void delete_from_end()
+    {
+    }
     void delete_from_position() {}
 };
 
