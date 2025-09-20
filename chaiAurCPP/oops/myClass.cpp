@@ -29,5 +29,7 @@ Chai::~Chai() {}
 
 int main()
 {
+    Chai myChai;
+
     return 0;
 }
