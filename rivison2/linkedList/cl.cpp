@@ -124,6 +124,26 @@ public:
         temp->next = newNode;
         sizeOfLL++;
     }
+
+    void delete_from_begin()
+    {
+        if (head->next == head || head->next == NULL)
+        {
+            Node *t = head;
+            head = NULL;
+            tail = NULL;
+            delete (t);
+            return;
+        }
+        Node *temp = head;
+        head = head->next;
+        head->prev = tail;
+        tail->next = head;
+        delete (temp);
+    }
+
+    void delete_from_end() {}
+    void delete_from_position() {}
 };
 
 int main()
@@ -136,6 +156,7 @@ int main()
     cicularLL.insert_at_end(222);
     cicularLL.insert_at_end(34);
     cicularLL.insert_at_position(121, 6);
+    cicularLL.delete_from_begin();
     cicularLL.print();
     return 0;
 }
