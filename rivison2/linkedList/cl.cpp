@@ -69,6 +69,7 @@ public:
         newNode->prev = tail;
         tail->next = newNode;
         sizeOfLL++;
+        return;
     }
     void insert_at_end(int value)
     {
@@ -87,6 +88,7 @@ public:
         tail->next = head;
         head->prev = tail;
         sizeOfLL++;
+        return;
     }
     void insert_at_position(int value, int position)
     {
@@ -123,16 +125,24 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
         sizeOfLL++;
+        return;
     }
 
     void delete_from_begin()
     {
+        if (sizeOfLL == 0)
+        {
+            cout << "How can you delete Node?? 🤨 LL is empty" << endl;
+            return;
+        }
+
         if (head->next == head || head->next == NULL)
         {
             Node *t = head;
             head = NULL;
             tail = NULL;
             delete (t);
+            sizeOfLL--;
             return;
         }
         Node *temp = head;
@@ -140,10 +150,72 @@ public:
         head->prev = tail;
         tail->next = head;
         delete (temp);
+        sizeOfLL--;
+        return;
     }
 
-    void delete_from_end() {}
-    void delete_from_position() {}
+    void delete_from_end()
+    {
+        if (sizeOfLL == 0)
+        {
+            cout << "How can you delete Node?? 🤨 LL is empty" << endl;
+            return;
+        }
+
+        if (head == NULL || head->next == NULL || head->next == head)
+        {
+            delete_from_end();
+            return;
+        }
+        Node *temp = tail;
+        head->prev = tail->prev;
+        tail->prev->next = head;
+        tail = tail->prev;
+
+        delete (temp);
+        sizeOfLL--;
+        return;
+    }
+    void delete_from_position(int position)
+    {
+
+        if (sizeOfLL == 0)
+        {
+            cout << "How can you delete Node?? 🤨 LL is empty" << endl;
+            return;
+        }
+
+        if (position == 1)
+        {
+            delete_from_begin();
+            return;
+        }
+        if (position - 1 == sizeOfLL)
+        {
+            delete_from_end();
+            return;
+        }
+
+        if (position > sizeOfLL)
+        {
+            cout << "How can you delete Node?? 🤨 . size of your LL is" << sizeOfLL << endl;
+            return;
+        }
+
+        Node *temp = head;
+        while ((position - 2) < 0 && (temp->next != head))
+        {
+            temp = temp->next;
+            position--;
+        }
+
+        Node *t = temp->next;
+        temp->next = t->next;
+        t->next->prev = temp;
+
+        delete (t);
+        sizeOfLL--;
+    }
 };
 
 int main()
@@ -156,6 +228,7 @@ int main()
     cicularLL.insert_at_end(222);
     cicularLL.insert_at_end(34);
     cicularLL.insert_at_position(121, 6);
+    cicularLL.delete_from_begin();
     cicularLL.delete_from_begin();
     cicularLL.print();
     return 0;
