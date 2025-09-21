@@ -47,6 +47,7 @@ public:
         cout << "<- " << tail->data << " ->";
     }
 
+    // insert elements in LL
     void insert_at_begin(int value)
     {
         if (head == NULL && tail == NULL)
@@ -128,6 +129,7 @@ public:
         return;
     }
 
+    // delete elements from LL
     void delete_from_begin()
     {
         if (sizeOfLL == 0)
@@ -153,7 +155,6 @@ public:
         sizeOfLL--;
         return;
     }
-
     void delete_from_end()
     {
         if (sizeOfLL == 0)
