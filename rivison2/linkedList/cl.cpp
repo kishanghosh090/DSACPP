@@ -35,13 +35,16 @@ public:
             cout << "LL is empty." << endl;
             return;
         }
+        // cout << tail->data;
 
         Node *temp = head;
-        while (temp->next != NULL)
+        while (temp->next != head)
+
         {
-            cout << "<- " << temp->data << " ->" << endl;
+            cout << "<- " << temp->data << " ->";
             temp = temp->next;
         }
+        cout << "<- " << tail->data << " ->";
     }
 
     void insert_at_begin(int value)
@@ -49,6 +52,8 @@ public:
         if (head == NULL && tail == NULL)
         {
             Node *newNode = new Node();
+            newNode->data = value;
+
             head = newNode;
             tail = newNode;
             sizeOfLL++;
@@ -74,6 +79,8 @@ public:
         }
 
         Node *newNode = new Node();
+        newNode->data = value;
+
         newNode->prev = tail;
         tail->next = newNode;
         tail = newNode;
@@ -83,16 +90,28 @@ public:
     }
     void insert_at_position(int value, int position)
     {
+        if (position == 1)
+        {
+            insert_at_begin(value);
+            return;
+        }
+
+        if (position == sizeOfLL + 1)
+        {
+            insert_at_end(value);
+            return;
+        }
+
         if (
-            (position <= 0) &&
-            (position > sizeOfLL + 1))
+            (position <= 0) ||
+            (position >= sizeOfLL + 2))
         {
             cout << "Invalid position value. you can give position value between 1 - " << sizeOfLL + 1 << ". as the size of LL is " << sizeOfLL << endl;
             return;
         }
 
         Node *temp = head;
-        while ((position - 2) > 0 && (temp->next != NULL))
+        while ((position - 2) > 0 && (temp->next != head))
         {
             temp = temp->next;
             position--;
@@ -110,6 +129,13 @@ public:
 int main()
 {
     CL cicularLL;
+    cicularLL.print();
+    cicularLL.insert_at_begin(12);
+    cicularLL.insert_at_begin(24);
+    cicularLL.insert_at_begin(48);
+    cicularLL.insert_at_end(222);
+    cicularLL.insert_at_end(34);
+    cicularLL.insert_at_position(121, 6);
     cicularLL.print();
     return 0;
 }
