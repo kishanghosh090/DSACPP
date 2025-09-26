@@ -53,7 +53,13 @@ int main()
     Stack s1;
     s1.push(12);
     s1.push(24);
-    cout << s1.top();
+    s1.push(342);
+    s1.push(34);
+    s1.push(122);
+    s1.push(2434);
+    cout << s1.top() << endl;
+    s1.pop();
+    cout << s1.top() << endl;
 
     return 0;
 }
