@@ -4,50 +4,56 @@ using namespace std;
 // Stack class -----------------
 class Stack
 {
+public:
     int stack[100];
-    int top;
+    int topIndex;
+
     Stack()
     {
-        top = -1;
+        topIndex = -1;
     }
 
     bool isempty()
     {
-        return top == -1;
+        return topIndex == -1;
     }
 
     void push(int val)
     {
-        if (top == 99)
+        if (topIndex == 99)
         {
             cout << "Overflow ...";
             return;
         }
 
-        top++;
-        stack[top] = val;
+        topIndex++;
+        stack[topIndex] = val;
     }
 
     int pop()
     {
-        int val = stack[top];
-        top--;
+        int val = stack[topIndex];
+        topIndex--;
         return val;
     }
 
     int top()
     {
-        if (top == -1)
+        if (topIndex == -1)
         {
             cout << "empty Stack";
             return -1;
         }
-        return stack[top];
+        return stack[topIndex];
     }
 };
 
 int main()
 {
+    Stack s1;
+    s1.push(12);
+    s1.push(24);
+    cout << s1.top();
 
     return 0;
 }
