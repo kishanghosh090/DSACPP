@@ -30,6 +30,11 @@ Chai::~Chai() {}
 int main()
 {
     Chai myChai;
+    vector<int> nums;
+    if (nums.empty())
+    {
+        cout << "hello";
+    }
 
     return 0;
 }
