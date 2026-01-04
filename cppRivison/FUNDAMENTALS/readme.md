@@ -1,0 +1,1 @@
+### run code -> g++ main.cpp ownStd.cpp -o app
